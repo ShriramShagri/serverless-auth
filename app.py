@@ -7,7 +7,7 @@ import hashlib
 
 app = Chalice(app_name='rediscashing')
 
-NoSQLdatabase = NoSQL(host=REDIS_HOST, password=REDIS_PASSWORD)
+NoSQLdatabase = NoSQL(host=REDIS_HOST, password=REDIS_PASSWORD, port=REDIS_PORT)
 
 FILE_ROUTE = '/auth'
 
