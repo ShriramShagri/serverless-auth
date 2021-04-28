@@ -63,3 +63,81 @@ A demo webapp for token management which can be deployed using aws lambda functi
 * [Chalice Documentation and tutorial](https://aws.github.io/chalice/)
 
 * [Redis Python Documentation](https://redis-py.readthedocs.io/)
+
+## Routes
+
+* `{{url}}/auth` home route for testing
+  * GET Request
+  * Include `Authorization : token` in headers
+  * Reply:
+
+      ```json
+      {
+          "result": "Hello *username",
+          "status": "SUCCESS",
+          "status_code": 1000
+      }
+      ```
+
+* `{{url}}/auth/signin` Signin route
+  * POST Request
+  * Body:
+
+      ```json
+      {
+          "username" : "username",
+          "password" : "password"
+      }
+      ```
+  
+  * Reply (includes token valid for 1 minute):
+
+      ```json
+      {
+          "result": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VybmFtZSI6IlNoYWdyaSIsInNhbHQiOiIwOTNlZGNlMTg3OTQzYmU1MDllZWQzZmQ3MGE0ODBhMjYwNWY4OTAxZjRiYWEwNzYzYjU0OTlmMzA2NmYzYmM0OTcwZTBjMTllMjU2YTI5ODY0NGE1ZGEwYjcyNTA5MDlhYjljNDYzYzE1OTFiNmQxNmNmNGY5NDAyOTJlYTAwYiIsImV4cCI6MTYxOTYwNzI0OX0.R_U90dOTSOLgHjVHGNqoPTir1w-E1coY9jDNr5fxo20",
+          "status": "SUCCESS",
+          "status_code": 1000
+      }
+      ```
+
+* `{{url}}/auth/signup` Signup new user
+  * POST Request
+  * Body:
+
+      ```json
+      {
+          "username" : "username",
+          "password" : "password"
+      }
+      ```
+  
+  * Reply:
+
+      ```json
+      {
+          "result": "",
+          "status": "SUCCESS",
+          "status_code": 1000
+      }
+      ```
+
+* `{{url}}/auth/password` Change password
+  * POST Request
+  * Include `Authorization : token` in headers
+  * Body:
+
+      ```json
+      {
+          "password" : "new password"
+      }
+      ```
+  
+  * Reply:
+
+      ```json
+      {
+          "result": "",
+          "status": "SUCCESS",
+          "status_code": 1000
+      }
+      ```
